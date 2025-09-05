@@ -1,0 +1,502 @@
+:root{
+  /* Paleta alinhada ao professor */
+  --brand:#164290;              /* azul */
+  --brand-hover:#015cd3;
+  --accent:#e8490f;             /* laranja principal */
+  --accent-hover:#fc9700;
+  --ok:#2e7d32;                 /* verde ok */
+  --warn:#e8490f;               /* vermelho destrutivo */
+  --muted:#6b7280;
+
+  --card:#ffffff;
+  --bg:#ffffff;                 /* fundo branco como no professor */
+  --shadow:1px 5px 5px 5px rgb(214, 214, 214);
+  --radius:15px;                /* cantos arredondados iguais */
+}
+
+/* Reset básico */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:#413f3f;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== Appbar (header) ===== */
+.appbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 32px;
+  background:#fff;
+  box-shadow:var(--shadow);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.appbar img{ height:75px; }
+.brand{display:flex;gap:.6rem;align-items:center}
+.logo-badge{
+  background:var(--brand);
+  color:#fff;
+  border-radius:10px;
+  padding:.25rem .55rem;
+  font-weight:700
+}
+
+/* ===== Container ===== */
+.container{
+  max-width:1100px;
+  margin:40px auto;
+  padding:0 .8rem;
+}
+
+/* ===== Abas ===== */
+.tabs{display:flex;gap:.6rem;margin-bottom:1rem}
+.tab{
+  background:#fff;
+  border:1px solid #c0bfbf;
+  padding:.6rem .95rem;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.2s ease;
+  font-weight:600;
+}
+.tab:hover{border-color:var(--accent); color:var(--accent)}
+.tab.is-active{
+  background:var(--brand);
+  color:#fff;
+  border-color:var(--brand)
+}
+
+/* Conteúdos das abas */
+.pane{ display:none; }
+.pane.is-active{ display:block; }
+
+/* ===== Filtros ===== */
+.filters{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:.8rem;
+  margin:.6rem 0 1rem
+}
+.f label{
+  display:block;
+  font-size:.9rem;
+  font-weight:bold;
+  color:#413f3f;
+  margin-bottom:.35rem
+}
+select{
+  width:100%;
+  padding:.6rem .7rem;
+  border:1px solid #c0bfbf;
+  border-radius:8px;
+  background:#fff;
+  outline:none;
+  transition:.2s ease;
+}
+select:focus{box-shadow:0 0 0 3px rgba(24,24,24,.08)}
+
+/* ===== Cards (Chamados) ===== */
+.cards{display:grid;gap:1rem}
+.card{
+  background:var(--card);
+  box-shadow:var(--shadow);
+  border-radius:var(--radius);
+  padding:1rem
+}
+.card-head{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.6rem
+}
+
+/* Badge de status */
+.status{
+  padding:.25rem .6rem;
+  border-radius:999px;
+  font-size:.75rem;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  background:#eef2ff;
+  color:#1e3a8a;
+  font-weight:700;
+}
+.status.em_andamento{background:rgba(232,73,15,.12);color:#e8490f}
+.status.aberto{background:#eff6ff;color:#1e40af}
+
+/* ===== Imagem do chamado (NÃO corta) ===== */
+.thumb{
+  display:flex;
+  max-width: 400px;
+  height:auto;
+  justify-content: center;
+  align-items: center;
+  background: transparent;     
+}
+
+
+.desc{color:#111;margin:.5rem 0 1rem}
+
+/* ===== Botões ===== */
+.actions{display:flex;gap:.6rem;flex-wrap:wrap}
+
+.btn{
+  border:none;
+  border-radius:8px;
+  background:#164290;
+  color:#ffffff;
+  padding:.65rem .9rem;
+  cursor:pointer;
+  font-weight:bold;
+  transition:.25s ease;
+}
+.btn:hover{background-color: #2079ee;}
+
+/* Primário laranja */
+.btn-ok{
+  background:var(--accent);
+  color:#fff;
+}
+.btn-ok:hover{background:var(--accent-hover); color:#fff}
+
+/* Perigo (excluir/desfazer) */
+.btn-warn{
+  background:var(--warn);
+  color:#fff;
+}
+.btn-warn:hover{filter:brightness(1.05)}
+
+/* Alternativo azul */
+.btn.is-blue{
+  background:var(--brand);
+  color:#fff;
+}
+.btn.is-blue:hover{background:var(--brand-hover)}
+
+/* ===== Tabela (Arquivados) ===== */
+.table-wrap{
+  overflow:auto;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:var(--shadow)
+}
+.table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:.95rem
+}
+.table th,.table td{
+  padding:.75rem 1rem;
+  border-bottom:1px solid #eee;
+  vertical-align:top
+}
+.table thead th{
+  background:#fafafa;
+  font-weight:600
+}
+.muted{color:var(--muted);text-align:center}
+
+/* ===== Login ===== */
+.login-body{
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;background:var(--bg)
+}
+.login-card{
+  background:#fff;
+  padding:2rem;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  width:min(420px,90vw);
+  text-align:center
+}
+.login-card h1{margin:.25rem 0 1rem}
+.login-logo{max-width: 100%;margin-bottom:.5rem}
+.field{margin:.6rem 0;text-align:left}
+.field label{display:block;margin-bottom:.25rem;color:#374151;font-size:.9rem;font-weight:700}
+.field input{
+  width:100%;
+  padding:.6rem;
+  border:1px solid #c0bfbf;
+  border-radius:8px;
+  outline:none;
+  transition:.2s ease
+}
+.field input:focus{box-shadow:0 0 0 3px rgba(24,24,24,.08)}
+.empty{
+  padding:1.25rem;background:#fff;border-radius:14px;color:#6b7280;box-shadow:var(--shadow)
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 900px){
+  .filters{grid-template-columns:1fr}
+  .container{margin:24px auto}
+}
+img {
+  max-width: 100%;            /* ajusta ao card automaticamente */
+  height: auto;
+}
+
+/* motivo quando o ticket está em andamento */
+.andamento-motivo{
+  margin: .25rem 0 .5rem;
+  font-size: .9rem;
+  color: #6b7280;
+}
+.andamento-motivo b{ color:#111; }
+/* Arquivados: refinamentos da tabela */
+.table { table-layout: auto; }
+.table th, .table td { white-space: nowrap; }
+.table .desc-col { white-space: normal; max-width: 360px; }
+.table .actions-col { white-space: nowrap; }
+
+/* ===== Desktop: mostrar a tabela inteira sem scroll horizontal ===== */
+@media (min-width: 1200px){
+  /* aumenta a área útil no desktop */
+  .container{
+    max-width: 1400px;   /* ajuste p/ 1500/1600 se quiser mais largo */
+  }
+
+  /* remove a barra de rolagem horizontal no desktop */
+  .table-wrap{
+    overflow: visible;
+  }
+
+  .table{
+    width: 100%;
+    table-layout: auto;
+  }
+
+  /* deixa as células quebrarem linha pra caber tudo na largura */
+  .table th,
+  .table td{
+    white-space: normal;
+    word-break: break-word;   /* quebra emails/descrições longas */
+  }
+
+  /* mantém os botões em linha */
+  .table .actions-col{
+    white-space: nowrap;
+  }
+
+  /* evita a descrição “dominar” a linha */
+  .table .desc-col{
+    max-width: 520px;         /* ajuste conforme o gosto */
+  }
+}
+
+/* ===== Mobile/Tablet: mantém o comportamento atual com scroll ===== */
+@media (max-width: 1199.98px){
+  .table-wrap{ overflow: auto; }
+  .table th, .table td{ white-space: nowrap; }
+  .table .desc-col{ white-space: normal; }
+}
+/* ===== Desktop: tabela ocupa a largura toda e NÃO quebra palavras ===== */
+@media (min-width: 1280px){
+  /* dá mais espaço pra tabela no desktop */
+  .container{
+    width: min(96vw, 1600px);   /* aumente p/ 1700/1800 se quiser ainda mais largo */
+    max-width: 1600px;
+  }
+
+  /* sem scroll horizontal no desktop */
+  .table-wrap{
+    overflow: visible;
+  }
+
+  .table{
+    width: 100%;
+    table-layout: auto;         /* deixa o navegador distribuir melhor as colunas */
+  }
+
+  /* NÃO quebrar palavras nos cabeçalhos e nas colunas curtas */
+  .table th,
+  .table td{
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
+
+  /* …mas a coluna de DESCRIÇÃO (6ª) pode quebrar pra caber texto longo */
+  .table th:nth-child(6),
+  .table td:nth-child(6){
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    max-width: 600px;           /* ajuste fino: 500–700px */
+  }
+
+  /* mantém os botões juntos na última coluna (AÇÕES) */
+  .table th:last-child,
+  .table td:last-child{
+    white-space: nowrap;
+  }
+}
+
+/* ===== Mobile/Tablet: mantém o scroll horizontal como já estava ===== */
+@media (max-width: 1279.98px){
+  .table-wrap{ overflow: auto; }
+  .table th, .table td{ white-space: nowrap; }
+  /* descrição pode quebrar no mobile também */
+  .table th:nth-child(6), .table td:nth-child(6){ white-space: normal; }
+}
+/* ---- meta chips dentro do card ---- */
+.card .title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #111;
+}
+
+.meta-row{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin: .5rem 0 .85rem;
+}
+
+.meta-item{
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 8px 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  display: flex;
+  flex-direction: column;
+  min-height: 54px;
+}
+
+.meta-item .k{
+  font-size: 11px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 4px;
+}
+
+.meta-item .v{
+  font-weight: 600;
+  color: #111;
+  line-height: 1.2;
+  word-break: break-word; /* emails longos não estouram */
+}
+/* ===== Cards: layout polido e responsivo ===== */
+
+/* Cabeçalho do card */
+.card-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:.6rem;
+  margin-bottom:.6rem;
+}
+.card-head .title{
+  font-weight:700;
+  font-size:1.05rem;
+  line-height:1.2;
+}
+
+/* Pílula de status */
+.status{
+  padding:.22rem .55rem;
+  border-radius:999px;
+  font-size:.72rem;
+  letter-spacing:.03em;
+  white-space:nowrap;
+}
+
+/* Linhas de metadados (caixinhas) */
+.meta-row{
+  display:grid;
+  grid-template-columns: repeat(5, minmax(0,1fr));
+  gap:.55rem;
+  margin-bottom:.7rem;
+}
+.meta-item{
+  background:#f7f8fb;
+  border:1px solid #e8e8e8;
+  border-radius:10px;
+  padding:.55rem .7rem;
+  line-height:1.2;
+  min-width:0;                 /* habilita wrap dentro da grid */
+}
+.meta-item .k{
+  display:block;
+  font-size:.70rem;
+  font-weight:700;
+  color:#6b7280;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  margin-bottom:.2rem;
+}
+.meta-item .v{
+  display:block;
+  font-size:.95rem;
+  color:#111;
+  word-break:break-word;
+  overflow-wrap:anywhere;      /* evita cortes/estouro */
+}
+
+/* Descrição com caixa bonita */
+.desc{
+  background:#fff7ed;
+  border:1px solid #ffd5b2;
+  border-left:6px solid #e8490f;    /* sua cor de destaque */
+  padding:.75rem .9rem;
+  border-radius:12px;
+  color:#2b2b2b;
+  margin:.6rem 0 1rem;
+  line-height:1.35;
+  word-break:break-word;
+  overflow-wrap:anywhere;
+}
+
+/* Foto do chamado */
+.thumb{
+  width:100%;
+  height:auto;
+  max-height:420px;
+  object-fit:cover;             /* desktop: preenchido */
+  border-radius:12px;
+  margin:.6rem 0;
+}
+
+/* Ações */
+.actions{
+  display:flex;
+  gap:.55rem;
+  flex-wrap:wrap;
+}
+.actions .btn{
+  flex:1 1 160px;
+  padding:.6rem .85rem;
+}
+
+/* ===== Mobile (até 480px) ===== */
+@media (max-width: 480px){
+  .card{ padding:12px; border-radius:12px; }
+  .card-head .title{ font-size:.98rem; }
+  .status{ font-size:.66rem; padding:.2rem .5rem; }
+
+  .meta-row{ grid-template-columns: repeat(2, 1fr); gap:.45rem; }
+  .meta-item{ padding:.5rem .55rem; }
+  .meta-item .k{ font-size:.68rem; }
+  .meta-item .v{ font-size:.90rem; }
+
+  .desc{ font-size:.92rem; padding:.65rem .75rem; }
+
+  .thumb{
+    max-height:45vh;
+    object-fit:contain;         /* mobile: mostra inteira, sem cortar */
+    background:#000;            /* bordas pretas ao redor quando necessário */
+  }
+
+  .actions .btn{
+    padding:.55rem .7rem;
+    font-size:.9rem;
+  }
+}
+
+/* ===== Tablet (481–900px) ===== */
+@media (min-width:481px) and (max-width:900px){
+  .meta-row{ grid-template-columns: repeat(3, 1fr); }
+}

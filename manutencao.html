@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Manutenção • Suporte</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="manutencao.css" />
+</head>
+<body>
+  <header class="appbar">
+    <div class="brand">
+      <img src="logo.png" alt="">
+    </div>
+    <button id="btnSair" class="btn btn-warn">Sair</button>
+  </header>
+
+  <main class="container">
+
+    <nav class="tabs">
+      <button class="tab is-active" data-tab="chamados">Chamados</button>
+      <button class="tab" data-tab="arquivados">Arquivados</button>
+    </nav>
+
+    <section id="tab-chamados" class="tab-panel" style="display:block;">
+      <div class="filters">
+        <div class="f">
+          <label>Setor</label>
+          <select id="fSetor">
+            <option value="">Todos</option>
+            <option>Metalúrgica</option>
+            <option>Mecatrônica</option>
+            <option>Construção civil</option>
+            <option>Plástico</option>
+            <option>Automotivo</option>
+            <option>Outro (área externa)</option>
+          </select>
+        </div>
+        <div class="f">
+          <label>Status</label>
+          <select id="fStatus">
+            <option value="">Todos (inclui concluídos)</option>
+            <option value="aberto">Abertos</option>
+            <option value="em_andamento">Em andamento</option>
+          </select>
+        </div>
+        <div class="f">
+          <label>Gravidade</label>
+          <select id="fGrav">
+            <option value="">Todas</option>
+            <option>Baixa</option>
+            <option>Média</option>
+            <option>Alta</option>
+            <option>Crítica</option>
+          </select>
+        </div>
+      </div>
+      <div id="listaChamados" class="cards"></div>
+    </section>
+
+    <section id="tab-arquivados" class="tab-panel">
+      <div class="filters">
+        <div class="f">
+          <label>Mês</label>
+          <select id="selMesArquivado"></select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="table">
+   <thead>
+  <tr>
+    <th>SETOR</th>
+    <th>GRAVIDADE</th>
+    <th>SALA</th>
+    <th>EXECUTANTE</th>
+    <th>SOLICITANTE</th>
+    <th>DESCRIÇÃO</th>
+    <th>ABERTURA</th>
+    <th>INÍCIO</th>
+    <th>FIM</th>
+    <th>DIAS</th>
+    <th>AÇÕES</th>
+  </tr>
+</thead>
+<tbody id="tbodyArquivados"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="manutencao.js"></script>
+</body>
+</html>

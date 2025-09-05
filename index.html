@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login • Manutenção Suporte</title>
+  <link rel="stylesheet" href="manutencao.css" />
+  <link rel="icon" href="img/pwa-192.png">
+</head>
+<body class="login-body">
+  <main class="login-card">
+    <img src="logo.png" alt="Logo" class="login-logo"/>
+    <h1>Manutenção</h1>
+    <div class="field">
+      <label>E-mail</label>
+      <input id="email" type="email" placeholder="suporte@empresa.com">
+    </div>
+    <div class="field">
+      <label>Senha</label>
+      <input id="senha" type="password" placeholder="••••••••">
+    </div>
+    <button id="entrar" class="btn btn-ok" style="width:100%;">Entrar</button>
+  </main>
+
+  <script type="module">
+    import { auth, signInWithEmailAndPassword } from './firebase.js';
+    const btn = document.getElementById('entrar');
+    btn.addEventListener('click', async ()=>{
+      const email = document.getElementById('email').value.trim();
+      const senha = document.getElementById('senha').value;
+      if(!email || !senha){ alert('Informe e-mail e senha.'); return; }
+      btn.disabled = true; btn.textContent = 'Entrando...';
+      try{
+        await signInWithEmailAndPassword(auth, email, senha);
+        location.href = 'manutencao.html';
+      }catch(e){
+        alert(e.message||e);
+      }finally{
+        btn.disabled = false; btn.textContent = 'Entrar';
+      }
+    });
+  </script>
+</body>
+</html>
